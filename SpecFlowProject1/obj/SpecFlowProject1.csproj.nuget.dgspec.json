@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rajesh\\source\\repos\\SpecFlowProject1Sulution\\SpecFlowProject1\\SpecFlowProject1.csproj": {}
+    "\\\\Mac\\Home\\Documents\\GitHub\\GithubPullResquestAutomationAssessment\\SpecFlowProject1\\SpecFlowProject1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rajesh\\source\\repos\\SpecFlowProject1Sulution\\SpecFlowProject1\\SpecFlowProject1.csproj": {
+    "\\\\Mac\\Home\\Documents\\GitHub\\GithubPullResquestAutomationAssessment\\SpecFlowProject1\\SpecFlowProject1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rajesh\\source\\repos\\SpecFlowProject1Sulution\\SpecFlowProject1\\SpecFlowProject1.csproj",
+        "projectUniqueName": "\\\\Mac\\Home\\Documents\\GitHub\\GithubPullResquestAutomationAssessment\\SpecFlowProject1\\SpecFlowProject1.csproj",
         "projectName": "SpecFlowProject1",
-        "projectPath": "C:\\Users\\rajesh\\source\\repos\\SpecFlowProject1Sulution\\SpecFlowProject1\\SpecFlowProject1.csproj",
+        "projectPath": "\\\\Mac\\Home\\Documents\\GitHub\\GithubPullResquestAutomationAssessment\\SpecFlowProject1\\SpecFlowProject1.csproj",
         "packagesPath": "C:\\Users\\rajesh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rajesh\\source\\repos\\SpecFlowProject1Sulution\\SpecFlowProject1\\obj\\",
+        "outputPath": "\\\\Mac\\Home\\Documents\\GitHub\\GithubPullResquestAutomationAssessment\\SpecFlowProject1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rajesh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -56,6 +56,14 @@
               "target": "Package",
               "version": "[16.5.0, )"
             },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[106.11.7, )"
+            },
+            "Selenium.Support": {
+              "target": "Package",
+              "version": "[3.141.0, )"
+            },
             "Selenium.WebDriver": {
               "target": "Package",
               "version": "[3.141.0, )"
@@ -71,6 +79,10 @@
             "SpecFlow.Plus.LivingDocPlugin": {
               "target": "Package",
               "version": "[3.7.141, )"
+            },
+            "System.Security.Cryptography.Xml": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             }
           },
           "imports": [

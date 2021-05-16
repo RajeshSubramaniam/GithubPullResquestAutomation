@@ -113,6 +113,7 @@ namespace SpecFlowProject1.Steps
         [Then(@"I should find '(.*)' message")]
         public void ThenIDo(string msg)
         {
+            
             string locator=""; 
             switch (msg)
             {

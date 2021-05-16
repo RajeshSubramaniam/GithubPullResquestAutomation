@@ -1,12 +1,16 @@
-﻿using OpenQA.Selenium;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using RestSharp;
+using RestSharp.Serialization.Json;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Xml;
 
 namespace SpecFlowProject1.Utility
 {
@@ -67,20 +71,27 @@ namespace SpecFlowProject1.Utility
 
         public Boolean CheckIfElementExists(string locator)
         {
-            bool exists = true;
-            List<IWebElement> elementList = new List<IWebElement>();
-            elementList.AddRange(browser.FindElements(By.XPath(locator)));
+            
+                bool exists = true;
+                
+                //string query = string.Format("return document.evaluate(\"{0} \", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;", locator);
+                //IJavaScriptExecutor jsExe = (IJavaScriptExecutor)browser;
+                //IWebElement element = (IWebElement)jsExe.ExecuteScript(query);
 
-            if (elementList.Count == 0)
-            {
-                exists = false;
-            }
-            return exists;
+            var element = browser.FindElements(By.XPath(locator));
+
+            if (element.Count == 0)
+                {
+                    exists = false;
+                }
+                return exists;
+            
         }
 
         public void CloseBrowser()
         {
-            browser.Quit();
+            if (browser!=null)
+                browser.Quit();
         }
 
         public void WaitForElement()
@@ -110,6 +121,49 @@ namespace SpecFlowProject1.Utility
             }
             catch (Exception e) { }
         }
+
+        public RestResponse GetResponseViaAPICall(string Uri, string authToken)
+        {
+            try
+            {
+
+                var client = new RestClient(Uri);
+                var request = new RestRequest(Method.GET);
+                request.AddHeader("apikey", authToken);
+                var response = client.Execute(request);
+                return (RestResponse)response;
+            }
+            catch (Exception e) { return null; }
+        }
+
+       
+        public string ExtractProjectPath()
+        {
+            string wokringDirecory = Environment.CurrentDirectory;
+            string projectDictionary = Directory.GetParent(wokringDirecory).Parent.FullName;
+            projectDictionary = projectDictionary.Replace(@"\bin", "")+"\\TestData";
+            return projectDictionary;
+        }
+
+        public string FetchData(string input)
+        {
+            string outputData = "";
+            XmlDocument docToRead = new XmlDocument();
+            string fileToLoad = ExtractProjectPath() + "\\Data.xml";
+            docToRead.Load(fileToLoad);
+
+            XmlNode node = docToRead.DocumentElement.SelectSingleNode("/root");
+            foreach (XmlNode n in docToRead.DocumentElement.ChildNodes)
+            {
+                if (n.Name == input)
+                {
+                    outputData = n.InnerText;
+                    break;
+                }
+            }
+            return outputData;
+        }
+
     }
     public static class WebDriverExtensions
     {

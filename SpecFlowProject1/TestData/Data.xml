@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<Uri>https://api.github.com/repos/{0}/{1}/pulls</Uri>
+	<AuthToken>b712c9c1b5a396c4446a355bfe7c992ecc949a09</AuthToken>
+</root>

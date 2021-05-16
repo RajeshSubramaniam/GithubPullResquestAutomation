@@ -91,16 +91,22 @@ namespace SpecFlowProject1.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Pull Requests")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PullRequestUsingAPI")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("mytag")]
-        public virtual void PullRequests()
+        public virtual void PullRequests_List(string onwer, string repository, string statusCode, string pullRequestID, string pullRequestTitle, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
-                    "mytag"};
+            string[] @__tags = new string[] {
+                    "apiAutomation"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pull Requests", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            argumentsOfScenario.Add("Onwer", onwer);
+            argumentsOfScenario.Add("Repository", repository);
+            argumentsOfScenario.Add("StatusCode", statusCode);
+            argumentsOfScenario.Add("PullRequestID", pullRequestID);
+            argumentsOfScenario.Add("PullRequestTitle", pullRequestTitle);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PullRequests_List", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -122,19 +128,417 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 5
- testRunner.Given("the first number is 50", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.Given(string.Format("I setup the API Uri with {0} and {1}", onwer, repository), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 6
- testRunner.And("the second number is 70", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("I setup the Authentication token", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 7
- testRunner.When("the two numbers are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.Then("I setup accept parameter as application/vnd.github.v3+json", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 8
- testRunner.Then("the result should be 120", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then("I send API Request to get the pull requests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 9
+testRunner.Then(string.Format("I validate {0} of the response", statusCode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 10
+testRunner.And(string.Format("I validate {0} and {1} in response data", pullRequestID, pullRequestTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PullRequests_List: Variant 0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PullRequestUsingAPI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("apiAutomation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Onwer", "sympli-coding-challenge")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Repository", "QA-CC-V1-Campbelltown")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:StatusCode", "200")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestID", "526127243")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestTitle", "Updated Readme")]
+        public virtual void PullRequests_List_Variant0()
+        {
+#line 4
+this.PullRequests_List("sympli-coding-challenge", "QA-CC-V1-Campbelltown", "200", "526127243", "Updated Readme", ((string[])(null)));
+#line hidden
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PullRequests_List: Variant 1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PullRequestUsingAPI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("apiAutomation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Onwer", "sympli-coding-challenge")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Repository", "QA-CC-V1-OperaHouse")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:StatusCode", "200")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestID", "530127845")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestTitle", "Updated README")]
+        public virtual void PullRequests_List_Variant1()
+        {
+#line 4
+this.PullRequests_List("sympli-coding-challenge", "QA-CC-V1-OperaHouse", "200", "530127845", "Updated README", ((string[])(null)));
+#line hidden
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PullRequests_List: Variant 2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PullRequestUsingAPI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("apiAutomation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Onwer", "sympli-coding-challenge")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Repository", "QA-CC-V1-HarbourBridge")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:StatusCode", "200")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestID", "NULL")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestTitle", "NULL")]
+        public virtual void PullRequests_List_Variant2()
+        {
+#line 4
+this.PullRequests_List("sympli-coding-challenge", "QA-CC-V1-HarbourBridge", "200", "NULL", "NULL", ((string[])(null)));
+#line hidden
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PullRequests_List: Variant 3")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PullRequestUsingAPI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("apiAutomation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 3")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Onwer", "sympli-coding-challenge")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Repository", "Dummy")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:StatusCode", "404")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestID", "NULL")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestTitle", "NULL")]
+        public virtual void PullRequests_List_Variant3()
+        {
+#line 4
+this.PullRequests_List("sympli-coding-challenge", "Dummy", "404", "NULL", "NULL", ((string[])(null)));
+#line hidden
+        }
+        
+        public virtual void PullRequests_ByBaseBranch(string onwer, string repository, string branch, string statusCode, string pullRequestID, string pullRequestTitle, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "apiAutomation"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Onwer", onwer);
+            argumentsOfScenario.Add("Repository", repository);
+            argumentsOfScenario.Add("Branch", branch);
+            argumentsOfScenario.Add("StatusCode", statusCode);
+            argumentsOfScenario.Add("PullRequestID", pullRequestID);
+            argumentsOfScenario.Add("PullRequestTitle", pullRequestTitle);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PullRequests_ByBaseBranch", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 21
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 22
+testRunner.Given(string.Format("I setup the API Uri with {0} and {1}", onwer, repository), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 23
+testRunner.And("I setup the Authentication token", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 24
+testRunner.Then("I setup accept parameter as application/vnd.github.v3+json", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 25
+testRunner.Then(string.Format("I setup base parameter as {0}", branch), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 26
+testRunner.Then("I send API Request to get the pull requests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 27
+testRunner.Then(string.Format("I validate {0} of the response", statusCode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 28
+testRunner.And(string.Format("I validate {0} and {1} in response data", pullRequestID, pullRequestTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PullRequests_ByBaseBranch: Variant 0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PullRequestUsingAPI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("apiAutomation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Onwer", "sympli-coding-challenge")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Repository", "QA-CC-V1-Campbelltown")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Branch", "master")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:StatusCode", "200")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestID", "526127243")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestTitle", "Updated Readme")]
+        public virtual void PullRequests_ByBaseBranch_Variant0()
+        {
+#line 21
+this.PullRequests_ByBaseBranch("sympli-coding-challenge", "QA-CC-V1-Campbelltown", "master", "200", "526127243", "Updated Readme", ((string[])(null)));
+#line hidden
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PullRequests_ByBaseBranch: Variant 1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PullRequestUsingAPI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("apiAutomation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Onwer", "sympli-coding-challenge")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Repository", "QA-CC-V1-OperaHouse")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Branch", "develop")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:StatusCode", "200")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestID", "NULL")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestTitle", "NULL")]
+        public virtual void PullRequests_ByBaseBranch_Variant1()
+        {
+#line 21
+this.PullRequests_ByBaseBranch("sympli-coding-challenge", "QA-CC-V1-OperaHouse", "develop", "200", "NULL", "NULL", ((string[])(null)));
+#line hidden
+        }
+        
+        public virtual void PullRequests_ByState(string onwer, string repository, string statusCode, string state, string pullRequestID, string pullRequestTitle, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "apiAutomation"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Onwer", onwer);
+            argumentsOfScenario.Add("Repository", repository);
+            argumentsOfScenario.Add("StatusCode", statusCode);
+            argumentsOfScenario.Add("State", state);
+            argumentsOfScenario.Add("PullRequestID", pullRequestID);
+            argumentsOfScenario.Add("PullRequestTitle", pullRequestTitle);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PullRequests_ByState", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 36
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 37
+testRunner.Given(string.Format("I setup the API Uri with {0} and {1}", onwer, repository), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 38
+testRunner.And("I setup the Authentication token", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 39
+testRunner.Then("I setup accept parameter as application/vnd.github.v3+json", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 40
+testRunner.Then(string.Format("I setup state parameter as {0}", state), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 41
+testRunner.Then("I send API Request to get the pull requests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 42
+testRunner.Then(string.Format("I validate {0} of the response", statusCode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 43
+testRunner.And(string.Format("I validate {0} and {1} in response data", pullRequestID, pullRequestTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PullRequests_ByState: Variant 0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PullRequestUsingAPI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("apiAutomation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Onwer", "sympli-coding-challenge")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Repository", "QA-CC-V1-OperaHouse")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:StatusCode", "200")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:State", "open")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestID", "530127845")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestTitle", "Updated README")]
+        public virtual void PullRequests_ByState_Variant0()
+        {
+#line 36
+this.PullRequests_ByState("sympli-coding-challenge", "QA-CC-V1-OperaHouse", "200", "open", "530127845", "Updated README", ((string[])(null)));
+#line hidden
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PullRequests_ByState: Variant 1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PullRequestUsingAPI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("apiAutomation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Onwer", "sympli-coding-challenge")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Repository", "QA-CC-V1-Uluru")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:StatusCode", "200")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:State", "open")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestID", "NULL")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestTitle", "NULL")]
+        public virtual void PullRequests_ByState_Variant1()
+        {
+#line 36
+this.PullRequests_ByState("sympli-coding-challenge", "QA-CC-V1-Uluru", "200", "open", "NULL", "NULL", ((string[])(null)));
+#line hidden
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PullRequests_ByState: Variant 2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PullRequestUsingAPI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("apiAutomation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Onwer", "sympli-coding-challenge")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Repository", "QA-CC-V1-Campbelltown")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:StatusCode", "200")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:State", "closed")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestID", "NULL")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestTitle", "NULL")]
+        public virtual void PullRequests_ByState_Variant2()
+        {
+#line 36
+this.PullRequests_ByState("sympli-coding-challenge", "QA-CC-V1-Campbelltown", "200", "closed", "NULL", "NULL", ((string[])(null)));
+#line hidden
+        }
+        
+        public virtual void PullRequests_ByPage(string onwer, string repository, string page, string state, string branch, string statusCode, string pullRequestID, string pullRequestTitle, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "apiAutomation"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Onwer", onwer);
+            argumentsOfScenario.Add("Repository", repository);
+            argumentsOfScenario.Add("Page", page);
+            argumentsOfScenario.Add("State", state);
+            argumentsOfScenario.Add("Branch", branch);
+            argumentsOfScenario.Add("StatusCode", statusCode);
+            argumentsOfScenario.Add("PullRequestID", pullRequestID);
+            argumentsOfScenario.Add("PullRequestTitle", pullRequestTitle);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("PullRequests_ByPage", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 52
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 53
+testRunner.Given(string.Format("I setup the API Uri with {0} and {1}", onwer, repository), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 54
+testRunner.And("I setup the Authentication token", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 55
+testRunner.Then("I setup accept parameter as application/vnd.github.v3+json", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 56
+testRunner.Then(string.Format("I setup page parameter as {0}", page), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 57
+testRunner.Then(string.Format("I setup state parameter as {0}", state), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 58
+testRunner.Then(string.Format("I setup base parameter as {0}", branch), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 59
+testRunner.Then("I send API Request to get the pull requests", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 60
+testRunner.Then(string.Format("I validate {0} of the response", statusCode), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 61
+testRunner.And(string.Format("I validate {0} and {1} in response data", pullRequestID, pullRequestTitle), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PullRequests_ByPage: Variant 0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PullRequestUsingAPI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("apiAutomation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 0")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Onwer", "sympli-coding-challenge")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Repository", "QA-CC-V1-OperaHouse")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Page", "1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:State", "open")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Branch", "master")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:StatusCode", "200")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestID", "530127845")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestTitle", "Updated README")]
+        public virtual void PullRequests_ByPage_Variant0()
+        {
+#line 52
+this.PullRequests_ByPage("sympli-coding-challenge", "QA-CC-V1-OperaHouse", "1", "open", "master", "200", "530127845", "Updated README", ((string[])(null)));
+#line hidden
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("PullRequests_ByPage: Variant 1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "PullRequestUsingAPI")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("apiAutomation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Variant 1")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Onwer", "sympli-coding-challenge")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Repository", "QA-CC-V1-Campbelltown")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Page", "2")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:State", "open")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:Branch", "master")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:StatusCode", "200")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestID", "NULL")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:PullRequestTitle", "NULL")]
+        public virtual void PullRequests_ByPage_Variant1()
+        {
+#line 52
+this.PullRequests_ByPage("sympli-coding-challenge", "QA-CC-V1-Campbelltown", "2", "open", "master", "200", "NULL", "NULL", ((string[])(null)));
+#line hidden
         }
     }
 }
