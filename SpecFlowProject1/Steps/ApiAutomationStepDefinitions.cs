@@ -108,7 +108,7 @@ namespace SpecFlowProject1.Steps
                     break;
 
                 case "Not Found":
-                    Assert.IsTrue(response == "Not Found");
+                    Assert.IsTrue(response.Contains("Not Found"));
                     break;
             }
         }
