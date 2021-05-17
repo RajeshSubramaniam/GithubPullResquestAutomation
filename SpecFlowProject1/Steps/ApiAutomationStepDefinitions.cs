@@ -63,7 +63,7 @@ namespace SpecFlowProject1.Steps
         [Then(@"I validate (.*) of the response")]
         public void ThenIValidateStatusOfTheResponse(int code)
         {
-            Assert.AreEqual((int)apiResponse.StatusCode, code);
+            Assert.AreEqual( code, (int)apiResponse.StatusCode);
         }
 
         [Then(@"I validate (.*) and (.*) in response data")]

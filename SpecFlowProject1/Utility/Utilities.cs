@@ -7,6 +7,7 @@ using RestSharp;
 using RestSharp.Serialization.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -71,21 +72,21 @@ namespace SpecFlowProject1.Utility
 
         public Boolean CheckIfElementExists(string locator)
         {
-            
-                bool exists = true;
-                
-                //string query = string.Format("return document.evaluate(\"{0} \", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;", locator);
-                //IJavaScriptExecutor jsExe = (IJavaScriptExecutor)browser;
-                //IWebElement element = (IWebElement)jsExe.ExecuteScript(query);
+
+            bool exists = true;
+
+            //string query = string.Format("return document.evaluate(\"{0} \", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;", locator);
+            //IJavaScriptExecutor jsExe = (IJavaScriptExecutor)browser;
+            //IWebElement element = (IWebElement)jsExe.ExecuteScript(query);
 
             var element = browser.FindElements(By.XPath(locator));
 
             if (element.Count == 0)
-                {
-                    exists = false;
-                }
-                return exists;
-            
+            {
+                exists = false;
+            }
+            return exists;
+
         }
 
         public void CloseBrowser()
@@ -107,15 +108,18 @@ namespace SpecFlowProject1.Utility
         {
             try
             {
-               // string unametestdata = ConfigurationManager.AppSettings["uname"].ToString();
-               // string pwdtestdata = ConfigurationManager.AppSettings["pwd"].ToString();
-                byte[] decodeByte = Convert.FromBase64String("TXljI3dvcmtzQDEyMw==");
-                string decodedStr = Encoding.UTF8.GetString(decodeByte);
+
+                string unameEnc = FetchData("gitUname");
+                string pwdEnc = FetchData("gitPwd");
+                byte[] unameByte = Convert.FromBase64String(unameEnc);
+                string unameDec = Encoding.UTF8.GetString(unameByte);
+                byte[] PwdByte = Convert.FromBase64String(pwdEnc);
+                string pwdDec = Encoding.UTF8.GetString(PwdByte);
 
                 element = browser.FindElement(By.XPath(uname));
-                element.SendKeys("rajesh90.it@gmail.com");
+                element.SendKeys(unameDec);
                 element = browser.FindElement(By.XPath(pwd));
-                element.SendKeys(decodedStr);
+                element.SendKeys(pwdDec);
                 element = browser.FindElement(By.XPath(sigin));
                 element.SendKeys(Keys.Enter);
             }

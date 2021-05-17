@@ -2,4 +2,6 @@
 <root>
 	<Uri>https://api.github.com/repos/{0}/{1}/pulls</Uri>
 	<AuthToken>b712c9c1b5a396c4446a355bfe7c992ecc949a09</AuthToken>
+	<gitUname>c3Rld2FydGEyOTdAZ21haWwuY29t</gitUname>
+	<gitPwd>TXljI3dvcmtzQDEyMw==</gitPwd>
 </root>

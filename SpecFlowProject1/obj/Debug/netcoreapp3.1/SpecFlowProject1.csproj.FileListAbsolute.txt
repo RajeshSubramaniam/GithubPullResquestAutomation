@@ -114,7 +114,6 @@ C:\Users\rajesh\source\repos\SpecFlowProject1Sulution\SpecFlowProject1\bin\Debug
 \\Mac\Home\Documents\GitHub\GithubPullResquestAutomationAssessment\SpecFlowProject1\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
 \\Mac\Home\Documents\GitHub\GithubPullResquestAutomationAssessment\SpecFlowProject1\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
 \\Mac\Home\Documents\GitHub\GithubPullResquestAutomationAssessment\SpecFlowProject1\bin\Debug\netcoreapp3.1\TechTalk.SpecFlow.MSTest.SpecFlowPlugin.dll
-\\Mac\Home\Documents\GitHub\GithubPullResquestAutomationAssessment\SpecFlowProject1\bin\Debug\netcoreapp3.1\SpecFlowProject1.dll.config
 \\Mac\Home\Documents\GitHub\GithubPullResquestAutomationAssessment\SpecFlowProject1\bin\Debug\netcoreapp3.1\SpecFlowProject1.deps.json
 \\Mac\Home\Documents\GitHub\GithubPullResquestAutomationAssessment\SpecFlowProject1\bin\Debug\netcoreapp3.1\SpecFlowProject1.runtimeconfig.json
 \\Mac\Home\Documents\GitHub\GithubPullResquestAutomationAssessment\SpecFlowProject1\bin\Debug\netcoreapp3.1\SpecFlowProject1.runtimeconfig.dev.json
