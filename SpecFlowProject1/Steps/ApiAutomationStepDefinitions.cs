@@ -47,8 +47,8 @@ namespace SpecFlowProject1.Steps
         }
 
 
-        [Then(@"I send API Request to get the pull requests")]
-        public void ThenISendAPIRequestToGetThePullRequests()
+        [Then(@"I send API (.*) Request to get the pull requests")]
+        public void ThenISendAPIRequestToGetThePullRequests(string method)
         {
             string collectiveParam = "";
             foreach (var param in apiParamList)
@@ -57,7 +57,7 @@ namespace SpecFlowProject1.Steps
             }
             collectiveParam = collectiveParam.Remove(collectiveParam.Length - 1);
             string updateUri = apiURI + "?"+collectiveParam;
-            apiResponse= _utility.GetResponseViaAPICall(updateUri, apiAuthToken);
+            apiResponse= _utility.GetResponseViaAPICall(updateUri, apiAuthToken, method);
         }
 
         [Then(@"I validate (.*) of the response")]
@@ -112,7 +112,6 @@ namespace SpecFlowProject1.Steps
                     break;
             }
         }
-        
 
     }
 }

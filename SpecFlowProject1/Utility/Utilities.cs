@@ -122,18 +122,34 @@ namespace SpecFlowProject1.Utility
             catch (Exception e) { }
         }
 
-        public RestResponse GetResponseViaAPICall(string Uri, string authToken)
+        public RestResponse GetResponseViaAPICall(string Uri, string authToken, string method)
         {
-            try
-            {
+           // try
+           // {
+                RestRequest request=new RestRequest();
+                switch (method)
+                {
+                    case "GET":
+                        request = new RestRequest(Method.GET);
+                        break;
+                    case "OPTIONS":
+                        request = new RestRequest(Method.OPTIONS);
+                        break;
+                    case "COPY":
+                        request = new RestRequest(Method.COPY);
+                        break;
+                    case "DELETE":
+                        request = new RestRequest(Method.DELETE);
+                        break;
+                }
 
                 var client = new RestClient(Uri);
-                var request = new RestRequest(Method.GET);
+                //var request = new RestRequest("VIEW");
                 request.AddHeader("apikey", authToken);
                 var response = client.Execute(request);
                 return (RestResponse)response;
-            }
-            catch (Exception e) { return null; }
+            //}
+            //catch (Exception e) { return null; }
         }
 
        
